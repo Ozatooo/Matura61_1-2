@@ -4,13 +4,13 @@
 #include <math.h>
 #include <string> 
 #include <sstream> 
+#include <vector>
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
 
 			int ile=0;
 			int poprzednia=0;
 			string ciag;
-            int ciagi=0;
 
 
         bool dwucykliczny(string ciag){
@@ -42,31 +42,15 @@ using namespace std;
 		
 		
 		
-		bool spr(int ciagi, string ciag){
+		bool spr(string ciag){
 			
-        for(int i=0; i<=ciag.length()-1;i++)
-        {
-        	
-            	if(poprzednia==0)
-            	{
-            		poprzednia=ciagi;
-				}
-				else
+        	for (int i = 0; i < ciag.length()-1; i++)
+		 	{
+				if (ciag[i] == '1' && ciag[i+1] == '1') 
 				{
-					if(poprzednia==1 && ciagi==1)
-					{
-					poprzednia=ciagi;
-            		return false;
-					}
-					else
-					{
-						poprzednia=ciagi;
-					}
+					return false;
 				}
-				
-
-	
-        }
+			}
         ile++;
 			return true;
 		}
@@ -110,9 +94,8 @@ int main(int argc, char** argv) {
                   {
 
                     
-                   	plik>>ciagi;
-                    
-                    spr(ciagi,ciag);
+					plik>>ciag;                    
+                    spr(ciag);
 
                 }
 
